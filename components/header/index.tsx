@@ -5,7 +5,7 @@ import{View,
     SafeAreaView, 
     Platform, 
     StatusBar} from 'react-native'
-import {colors} from '../../constants/colors'
+import { colors, useColors } from '@/constants/colors'
 import {Feather} from '@expo/vector-icons'
 import { router } from 'expo-router'
 
@@ -15,14 +15,15 @@ interface HeaderProps {
 }
 
 export function Header({step, title}: HeaderProps) {
+  const colors = useColors();
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.content}>
             <View style={styles.row}>
                 <Pressable onPress={() => router.back()}>
-                    <Feather name='arrow-left' size={24} color={colors.black} />
+                    <Feather name='arrow-left' size={20} color={colors.text} />
                 </Pressable>
-                <Text style={styles.text}>{step}<Feather name='loader' size={16} color={colors.black} /> </Text>
+                <Text style={styles.text}>{step}<Feather name='loader' size={14} color={colors.primary} /> </Text>
 
             </View>
 
@@ -36,33 +37,35 @@ export function Header({step, title}: HeaderProps) {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: colors.white,
-        borderBottomRightRadius: 14,
-        borderBottomLeftRadius: 14,
-        marginBottom: 14,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight! +34 : 34,
+        backgroundColor: colors.surface,
+        borderBottomWidth: 1,
+        borderBottomColor: colors.border,
+        paddingTop: 8,
+        paddingBottom: 8,
+        shadowColor: colors.text,
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
     },
     content: {
-        paddingLeft: 16,
-        paddingRight: 16,
-        paddingBottom: 34,
-        borderBottomRightRadius: 14,
-        borderBottomLeftRadius: 14,
+        paddingLeft: 20,
+        paddingRight: 20,
     },
-
-    row :{
+    row: {
         flexDirection: 'row',
-        gap: 8,
         alignItems: 'center',
+        justifyContent: 'space-between',
     },
     text: {
-        fontSize: 18,
-        fontWeight: '500',
-        color: colors.black,
+        fontSize: 16,
+        fontWeight: '600',
+        color: colors.textSecondary,
     },
     title: {
-        fontSize: 30,
+        fontSize: 24,
         fontWeight: 'bold',
-        color: colors.background
+        color: colors.text,
+        marginTop: 8,
     }
 })

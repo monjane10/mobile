@@ -1,6 +1,6 @@
 import {View, StyleSheet, Text, TextInput, KeyboardTypeOptions} from 'react-native'
 import {Controller} from 'react-hook-form'
-import {colors} from '../../constants/colors'
+import { colors, useColors } from '@/constants/colors'
 
 interface  InputProps {
     control: any
@@ -13,6 +13,7 @@ interface  InputProps {
 
 
 export  function Input({ name, control, placeholder, rules, error, keyboardType}: InputProps) {
+    const colors = useColors();
     return (
         <View style={styles.container}>
             <Controller
@@ -22,6 +23,7 @@ export  function Input({ name, control, placeholder, rules, error, keyboardType}
             render={({field:{onChange, onBlur, value}}) => (
                 <TextInput style={styles.input}
                 placeholder= {placeholder}
+                placeholderTextColor={colors.textSecondary}
                 onBlur={onBlur}
                 value={value}
                 onChangeText={onChange}
@@ -37,16 +39,26 @@ export  function Input({ name, control, placeholder, rules, error, keyboardType}
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 16,
+        marginBottom: 20,
     },
     input: {
-        height: 44,
-        backgroundColor: colors.white,
-        paddingHorizontal: 10,
-        borderRadius: 4,
+        height: 48,
+        backgroundColor: colors.surface,
+        paddingHorizontal: 18,
+        borderRadius: 16,
+        borderWidth: 1,
+        borderColor: colors.border,
+        fontSize: 16,
+        color: colors.text,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
     },
     errorText: {
-        color: colors.red,
-        marginTop: 4,
+        color: colors.error,
+        marginTop: 8,
+        fontSize: 14,
     }
 })

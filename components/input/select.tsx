@@ -1,7 +1,7 @@
 import { View, StyleSheet, Text, TouchableOpacity, FlatList, Modal } from 'react-native';
 import React from 'react';
 import { Controller } from 'react-hook-form';
-import { colors } from '../../constants/colors';
+import { colors, useColors } from '@/constants/colors';
 import { Feather } from '@expo/vector-icons';
 import {useState} from 'react'
 
@@ -21,6 +21,7 @@ interface SelectProps {
 export function Select({ name, control, placeholder, error, options }: SelectProps) {
 
     const [Visible, setVisible] = useState(false);
+    const colors = useColors();
 
     return (
         <View style={styles.container}>
@@ -30,8 +31,8 @@ export function Select({ name, control, placeholder, error, options }: SelectPro
                 render={({ field: { onChange, onBlur, value } }) => (
                     <>
                         <TouchableOpacity style={styles.select} onPress={() => setVisible(true)}>
-                            <Text>{value? options.find(item => item.value === value)?.label : placeholder}</Text>
-                            <Feather name="arrow-down" size={16} color="#000" />
+                            <Text style={styles.selectText}>{value? options.find(item => item.value === value)?.label : placeholder}</Text>
+                            <Feather name="arrow-down" size={16} color={colors.text} />
                         </TouchableOpacity>
 
                         <Modal
@@ -77,43 +78,57 @@ export function Select({ name, control, placeholder, error, options }: SelectPro
 
 const styles = StyleSheet.create({
     container: {
-        marginBottom: 16,
+        marginBottom: 20,
     },
-    input: {
-        height: 44,
-        backgroundColor: colors.white,
-        paddingHorizontal: 10,
-        borderRadius: 4,
+    selectText: {
+        fontSize: 16,
+        color: colors.text,
     },
     errorText: {
-        color: colors.red,
-        marginTop: 4,
+        color: colors.error,
+        marginTop: 8,
+        fontSize: 14,
     },
     select: {
         flexDirection: 'row',
-        height: 44,
-        backgroundColor: colors.white,
+        height: 48,
+        backgroundColor: colors.surface,
         alignItems: 'center',
         justifyContent: 'space-between',
-        paddingHorizontal: 10,
-        borderRadius: 4,
+        paddingHorizontal: 18,
+        borderRadius: 16,
+        borderWidth: 1,
+        borderColor: colors.border,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 3,
     },
     modalContainer: {
         flex: 1,
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backgroundColor: 'rgba(0, 0, 0, 0.6)',
         justifyContent: 'center',
         alignItems: 'center',
     },
     modalContent: {
-        backgroundColor: colors.white,
-        padding: 20,
-        borderRadius: 8,
-        width: '80%',
+        backgroundColor: colors.surface,
+        padding: 24,
+        borderRadius: 20,
+        width: '85%',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 8 },
+        shadowOpacity: 0.3,
+        shadowRadius: 16,
+        elevation: 12,
     },
     option: {
-        paddingVertical: 14,
-        backgroundColor: 'rgba(208, 208, 208, 0.40)',
-        borderRadius: 4,
-        paddingHorizontal: 8,
+        paddingVertical: 16,
+        backgroundColor: 'rgba(255,255,255,0.05)',
+        borderRadius: 12,
+        paddingHorizontal: 16,
+        marginVertical: 4,
+        borderWidth: 1,
+        borderColor: colors.border,
     }
 });
