@@ -15,9 +15,9 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 
 const schema = z.object({
-  gender: z.string().min(1, 'Genero obrigatorio'),
-  goal: z.string().min(1, 'Objectivo obrigatorio'),
-  level: z.string().min(1, 'Selecione o seu nivel'),
+  gender: z.string().min(1, 'Gênero obrigatório'),
+  goal: z.string().min(1, 'Objectivo obrigatório'),
+  level: z.string().min(1, 'Selecione o seu nível'),
 })
 
 type FormData = z.infer<typeof schema>
@@ -30,16 +30,16 @@ export default function Create() {
     const setPageTwo = useDataStore((state) => state.setPageTwo)
     const genderOptions = [{label: 'Masculino', value: 'Masculino'}, {label: 'Feminino', value: 'Feminino'}]
     const levelOptions = [
-      { label: 'Sedentario (pouco ou nenhuma atividade fisica)', value: 'Sedentario' },
-      { label: 'Levemente ativo (exercicios 1 a 3 vezes na semana)', value: 'Levemente ativo' },
-      { label: 'Moderadamente ativo (exercicios 3 a 5 vezes na semana)', value: 'Moderadamente ativo' },
-      { label: 'Altamente ativo (exercicios 5 a 7 dias por semana)', value: 'Altamente ativo' },
+      { label: 'Sedentário (pouco ou nenhuma actividade física)', value: 'Sedentario' },
+      { label: 'Levemente activo (exercícios 1 a 3 vezes na semana)', value: 'Levemente activo' },
+      { label: 'Moderadamente activo (exercícios 3 a 5 vezes na semana)', value: 'Moderadamente activo' },
+      { label: 'Altamente activo (exercícios 5 a 7 dias por semana)', value: 'Altamente activo' },
     ]
     const goalOptions =  [
       { label: 'Emagrecer', value: 'Emagrecer' },
       { label: 'Hipertrofia', value: 'Hipertrofia' },
-      { label: 'Hipertrofia + Definicao', value: 'Hipertrofia + Definicao' },
-      { label: 'Definicao', value: 'Definicao'},
+      { label: 'Hipertrofia + Definição', value: 'Hipertrofia + Definição' },
+      { label: 'Definição', value: 'Definição'},
     ]
 
   function handleCreate(data: FormData) {
@@ -194,7 +194,7 @@ export default function Create() {
             <View style={styles.heroText}>
               <Text style={styles.heroTitle}>Suas Preferências</Text>
               <Text style={styles.heroSubtitle}>
-                Configure suas metas e estilo de vida para uma dieta perfeita
+                Forneça as tuas metas e estilo de vida para uma dieta perfeita
               </Text>
             </View>
           </View>
@@ -228,7 +228,7 @@ export default function Create() {
                 <View style={styles.inputIcon}>
                   <Ionicons name="fitness" size={20} color={colors.white} />
                 </View>
-                <Text style={styles.label}>Nível de Atividade Física</Text>
+                <Text style={styles.label}>Nível de Actividade Física</Text>
               </View>
               <View style={styles.inputContent}>
                 <Select
@@ -248,13 +248,13 @@ export default function Create() {
                 <View style={styles.inputIcon}>
                   <Ionicons name="trophy" size={20} color={colors.white} />
                 </View>
-                <Text style={styles.label}>Objetivo</Text>
+                <Text style={styles.label}>Objectivo</Text>
               </View>
               <View style={styles.inputContent}>
                 <Select
                   control={control}
                   name='goal'
-                  placeholder='Selecione o seu objetivo'
+                  placeholder='Selecione o seu objectivo'
                   error={errors.goal?.message}
                   options={goalOptions}
                 />

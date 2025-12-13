@@ -13,7 +13,7 @@ function resolveBaseURL() {
   if (lanHost) return `http://${lanHost}:3333`;
 
   // 3) Fallback para localhost (emulador Android usa 10.0.2.2)
-  if (Platform.OS === 'android') return 'http://10.0.2.2:3333';
+  if (Platform.OS === 'android') return 'http://127.0.0.1:3333';
   return 'http://localhost:3333';
 }
 

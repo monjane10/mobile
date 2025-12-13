@@ -189,7 +189,7 @@ export default function Step(){
             <View style={styles.heroText}>
               <Text style={styles.heroTitle}>Vamos começar</Text>
               <Text style={styles.heroSubtitle}>
-                Precisamos de algumas informações básicas para criar sua dieta personalizada
+                Precisamos de algumas informações básicas para podermos gerar a tua dieta
               </Text>
             </View>
           </View>
@@ -223,7 +223,7 @@ export default function Step(){
                 <View style={styles.inputIcon}>
                   <Ionicons name="scale" size={20} color={colors.white} />
                 </View>
-                <Text style={styles.label}>Seu peso atual</Text>
+                <Text style={styles.label}>Teu peso actual</Text>
               </View>
               <View style={styles.inputContent}>
                 <Input
@@ -243,7 +243,7 @@ export default function Step(){
                 <View style={styles.inputIcon}>
                   <Ionicons name="body" size={20} color={colors.white} />
                 </View>
-                <Text style={styles.label}>Sua altura</Text>
+                <Text style={styles.label}>Tua altura</Text>
               </View>
               <View style={styles.inputContent}>
                 <Input
@@ -263,7 +263,7 @@ export default function Step(){
                 <View style={styles.inputIcon}>
                   <Ionicons name="calendar" size={20} color={colors.white} />
                 </View>
-                <Text style={styles.label}>Sua idade</Text>
+                <Text style={styles.label}>Tua idade</Text>
               </View>
               <View style={styles.inputContent}>
                 <Input

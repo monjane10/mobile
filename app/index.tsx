@@ -34,16 +34,28 @@ export default function Index(){
       borderWidth: 1,
       borderColor: colors.border,
     },
+
+    
     content: {
+      flex: 1,
+      padding: 24,
+      justifyContent: 'space-between',
+    },
+    main: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      padding: 24,
     },
+
+    footer: {
+      alignItems: 'center',
+      paddingBottom: 8,
+    },
+
     logo: {
       width: 100,
       height: 100,
-      marginBottom: 24,
+      marginBottom:24,
     },
     title: {
       fontSize: 48,
@@ -84,6 +96,15 @@ export default function Index(){
       color: colors.white,
       fontSize: 18,
       fontWeight: 'bold',
+    },
+
+    footerText: {
+      fontSize: 14,
+      color: colors.text,
+      opacity: 0.75,
+      fontWeight: '600',
+      textAlign: 'center',
+      letterSpacing: 0.2,
     }
   });
 
@@ -100,22 +121,31 @@ export default function Index(){
       </View>
 
       <View style={styles.content}>
-        <Image
-          source={require('../assets/images/logo.png')}
-          style={styles.logo}
-        />
-        <Text style={styles.title}>
-          Diet<Text style={{color: colors.accent}}>Assistent</Text>
-        </Text>
-        <Text style={styles.subtitle}>Seu assistente inteligente</Text>
-        <Text style={styles.text}>
-          Crie dietas personalizadas com IA para alcançar seus objetivos de saúde.
-        </Text>
-        <Link href="./step" asChild>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Começar Jornada</Text>
-          </Pressable>
-        </Link>
+        {/* ✅ conteúdo principal centralizado */}
+        <View style={styles.main}>
+          <Image
+            source={require('../assets/images/logo.png')}
+            style={styles.logo}
+          />
+          <Text style={styles.title}>
+            Diet<Text style={{color: colors.accent}}>Assistent</Text>
+          </Text>
+          <Text style={styles.subtitle}>O teu assistente inteligente</Text>
+          <Text style={styles.text}>
+            Crie dietas personalizadas com Intelingência Artificial para alcançar seus objectivos de saúde.
+          </Text>
+
+          <Link href="./step" asChild>
+            <Pressable style={styles.button}>
+              <Text style={styles.buttonText}>Começar Jornada</Text>
+            </Pressable>
+          </Link>
+        </View>
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>
+            Desenvolvido por Lourenço Monjane.
+          </Text>
+        </View>
       </View>
     </SafeAreaView>
   )

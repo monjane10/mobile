@@ -26,18 +26,89 @@ export default function Nutrition() {
         content: {
             paddingBottom: 40,
         },
+
+        /* =========================
+           LOADING (IA) - ALTERADO
+           ========================= */
         loading: {
             flex: 1,
             backgroundColor: colors.background,
             justifyContent: "center",
             alignItems: "center",
+            paddingHorizontal: 24,
         },
+
+        aiLoadingCard: {
+            width: "100%",
+            maxWidth: 320,
+            backgroundColor: colors.surface,
+            borderRadius: 24,
+            paddingVertical: 32,
+            paddingHorizontal: 24,
+            alignItems: "center",
+            borderWidth: 1,
+            borderColor: colors.border,
+            shadowColor: colors.secondary,
+            shadowOffset: { width: 0, height: 6 },
+            shadowOpacity: 0.25,
+            shadowRadius: 16,
+            elevation: 8,
+        },
+
+        aiIconWrapper: {
+            width: 72,
+            height: 72,
+            borderRadius: 36,
+            backgroundColor: colors.secondary + "20",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 16,
+            shadowColor: colors.secondary,
+            shadowOffset: { width: 0, height: 0 },
+            shadowOpacity: 0.6,
+            shadowRadius: 20,
+            elevation: 10,
+        },
+
+        aiTitle: {
+            fontSize: 18,
+            fontWeight: "bold",
+            color: colors.text,
+            marginBottom: 6,
+            textAlign: "center",
+        },
+
+        aiSubtitle: {
+            fontSize: 14,
+            color: colors.textSecondary,
+            textAlign: "center",
+            lineHeight: 20,
+        },
+
+        aiBadge: {
+            marginTop: 16,
+            paddingHorizontal: 14,
+            paddingVertical: 6,
+            borderRadius: 16,
+            backgroundColor: colors.primary + "15",
+        },
+
+        aiBadgeText: {
+            fontSize: 12,
+            fontWeight: "600",
+            color: colors.primary,
+            letterSpacing: 0.5,
+            textTransform: "uppercase",
+        },
+
+        /* Mantido (para não afetar o resto / erro-state) */
         loadingText: {
             fontSize: 20,
             color: colors.text,
             marginBottom: 6,
             textAlign: "center",
         },
+
         fixedHeader: {
             backgroundColor: colors.surface,
             borderBottomWidth: 1,
@@ -408,12 +479,28 @@ export default function Nutrition() {
         }
     }
 
+    /* =========================
+       LOADING (IA) - ALTERADO
+       ========================= */
     if (isFetching) {
-        return <View style={styles.loading}>
-            <Ionicons name="sparkles" size={40} color={colors.secondary} style={{ marginBottom: 8 }} />
-            <Text style={styles.loadingText}>Carregando...</Text>
-            <Text style={styles.loadingText}>Consultando IA...</Text>
-        </View>;
+        return (
+            <View style={styles.loading}>
+                <View style={styles.aiLoadingCard}>
+                    <View style={styles.aiIconWrapper}>
+                        <Ionicons name="sparkles" size={36} color={colors.secondary} />
+                    </View>
+
+                    <Text style={styles.aiTitle}>A gerar o seu plano alimentar</Text>
+                    <Text style={styles.aiSubtitle}>
+                        A Inteligência Artificial está a analisar os seus dados
+                    </Text>
+
+                    <View style={styles.aiBadge}>
+                        <Text style={styles.aiBadgeText}>Processamento por IA</Text>
+                    </View>
+                </View>
+            </View>
+        );
     }
 
     if (error) {
@@ -458,8 +545,8 @@ export default function Nutrition() {
                                 </View>
                                 <View style={styles.heroText}>
                                     <Text style={styles.heroTitle}>Olá, {data?.nome}!</Text>
-                                    <Text style={styles.heroSubtitle}>Seu plano alimentar personalizado está pronto</Text>
-                                    <Text style={styles.heroGoal}>Objetivo: {data?.objetivo}</Text>
+                                    <Text style={styles.heroSubtitle}>O teu plano alimentar personalizado está pronto</Text>
+                                    <Text style={styles.heroGoal}>Objectivo: {data?.objetivo}</Text>
                                 </View>
                             </View>
                         </View>
@@ -473,7 +560,7 @@ export default function Nutrition() {
                             </View>
                             <View style={styles.statCard}>
                                 <Ionicons name="body" size={24} color={colors.primary} />
-                                <Text style={styles.statValue}>{data?.altura}cm</Text>
+                                <Text style={styles.statValue}>{data?.altura} M</Text>
                                 <Text style={styles.statLabel}>Altura</Text>
                             </View>
                             <View style={styles.statCard}>
